@@ -1,11 +1,5 @@
 #include <Ultrasonic.h>
 
-#include <Ultrasonic.h>
-
-#include <Ultrasonic.h>
-
-#include <Ultrasonic.h>
-
 #define pinoUST 4
 #define pinoUSE 5
 #define pinoSensorIVD 11
@@ -14,7 +8,8 @@
 const uint8_t m1=0; 
 const uint8_t m2=8;
 
-Ultrasonic ultrasonic(pinoUST, pinoUSE);
+//Ultrasonic ultrasonic(pinoUST, pinoUSE);
+Ultrasonic ultrasonic(4, 5);
 
 class DCMotor
 {
@@ -109,9 +104,12 @@ void Desvio()
 {
   int distanciaMinima=20;
 
+  /*
   long microsec = ultrasonic.timing();
   float distancia = ultrasonic.convert(microsec, Ultrasonic::CM);
-
+  */
+  int distancia = ultrasonic.read();
+  
   Serial.print("Distancia: ");
   Serial.print(distancia);
   Serial.println(" cm");
